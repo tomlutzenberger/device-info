@@ -1,0 +1,31 @@
+{
+  "name": "device-info",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/tomlutzenberger/device-info.git",
+  "author": "Tom Lutzenberger <lutzenbergerthomas@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "htmlhint": "^0.9.13",
+    "less": "^2.7.2",
+    "less-plugin-clean-css": "^1.5.1",
+    "stylelint": "^7.11.1",
+    "stylelint-config-standard": "^16.0.0",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
+  },
+  "scripts": {
+    "less": "lessc --no-ie-compat --no-js --clean-css less/main.less dist/css/deviceinfo.min.css",
+    "lint:js": "eslint --config .eslintrc.json src;",
+    "lint:style": "stylelint --config .stylelintrc less/*.less;",
+    "lint:html": "htmlhint --config .htmlhintrc index.html;",
+    "lint": "yarn run lint:html && yarn run lint:style && yarn run lint:js",
+    "uglify": "uglifyjs js/deviceinfo.js --output dist/js/deviceinfo.min.js --compress --mangle --reserved --screw-ie8",
+    "build": "yarn run lint && yarn run less && yarn run uglify"
+  }
+}
