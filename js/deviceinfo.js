@@ -1,4 +1,4 @@
-/**
+/*!
  * DeviceInfo v0.1
  * Dynamic Bookmarklet to quickly access the backend of your tool
  *
