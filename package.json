@@ -25,7 +25,7 @@
     "lint:style": "stylelint --config .stylelintrc less/*.less;",
     "lint:html": "htmlhint --config .htmlhintrc index.html;",
     "lint": "yarn run lint:html && yarn run lint:style && yarn run lint:js",
-    "uglify": "uglifyjs js/deviceinfo.js --output dist/js/deviceinfo.min.js --compress --mangle --reserved --screw-ie8",
+    "uglify": "uglifyjs js/deviceinfo.js --output dist/js/deviceinfo.min.js --compress --mangle --reserved --comments --screw-ie8",
     "build": "yarn run lint && yarn run less && yarn run uglify"
   }
 }
