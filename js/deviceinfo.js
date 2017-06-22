@@ -57,15 +57,8 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowInnerDimension: () => {
-            const windowInnerDimension = document.getElementById('window-inner-dimension');
-
-            if (windowInnerDimension !== null) {
-                windowInnerDimension.lastElementChild.innerHTML = `${win.getWindowInnerWidth()}x${win.getWindowInnerHeight()}`;
-                return true;
-            } else {
-                console.error('#window-inner-dimension is not a DOM element');
-                return false;
-            }
+            const content = `${win.getWindowInnerWidth()}x${win.getWindowInnerHeight()}`;
+            return injectIntoDom('window-inner-dimension', content);
         },
 
         /**
@@ -97,15 +90,8 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowOuterDimension: () => {
-            const windowOuterDimension = document.getElementById('window-outer-dimension');
-
-            if (windowOuterDimension !== null) {
-                windowOuterDimension.lastElementChild.innerHTML = `${win.getWindowOuterWidth()}x${win.getWindowOuterHeight()}`;
-                return true;
-            } else {
-                console.error('#window-outer-dimension is not a DOM element');
-                return false;
-            }
+            const content = `${win.getWindowOuterWidth()}x${win.getWindowOuterHeight()}`;
+            return injectIntoDom('window-outer-dimension', content);
         },
 
 
@@ -138,14 +124,8 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowMaxDimension: () => {
-            const windowMaxDimension = document.getElementById('window-max-dimension');
-            if (windowMaxDimension !== null) {
-                windowMaxDimension.lastElementChild.innerHTML = `${win.getWindowMaxWidth()}x${win.getWindowMaxHeight()}`;
-                return true;
-            } else {
-                console.error('#window-max-dimension is not a DOM element');
-                return false;
-            }
+            const content = `${win.getWindowMaxWidth()}x${win.getWindowMaxHeight()}`;
+            return injectIntoDom('window-max-dimension', content);
         },
 
 
@@ -183,14 +163,66 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowSize: () => {
-            const windowSize = document.getElementById('window-size');
-            if (windowSize !== null) {
-                windowSize.lastElementChild.innerHTML = `${win.getWindowSize()}`;
+            const content = `${win.getWindowSize()}`;
+            return injectIntoDom('window-size', content);
+        }
+    };
+
+
+
+    /**
+     * @method log
+     * @description Passed parameters will be logged to the console. First parameter defines the log-level
+     *
+     * @param {String} logLevel - The level in which the message should be logged (log, debug, error, ...)
+     * @param {...*} logParams - Variable amount of mixed parameters
+     * @return {Boolean}
+     */
+    const log = (logLevel, ...logParams) => {
+
+        const MIN_PARAM_COUNT = 2;
+
+        // Overwrite console to prevent eslint "no-console" errors
+        const LOGGER = window.console;
+
+        // Convert logParams object to array
+        let params = Object.keys(logParams).map(index => logParams[index]);
+        params.unshift('[DeviceInfo]');
+
+        // only continue in Dev-Mode and if there are more than 1 log params
+        if(params.length >= MIN_PARAM_COUNT) {
+            if(typeof LOGGER[logLevel] === 'function') {
+                LOGGER[logLevel].apply(console, params);
                 return true;
             } else {
-                console.error('#window-size is not a DOM element');
+                LOGGER.error('console.' + logLevel + ' is not a valid logging function.');
+                LOGGER.debug.apply(console, params);
                 return false;
             }
+        }
+
+        return false;
+    };
+
+
+
+    /**
+     * @method injectIntoDom
+     * @description Injects text/html into DOM
+     *
+     * @param {String} domElementId - The ID of the DOM element into which should be injected
+     * @param {String} content - Content to be injected
+     * @return {Boolean}
+     */
+    const injectIntoDom = (domElementId, content) => {
+        const element = document.getElementById(domElementId);
+        if (element !== null) {
+            const elementClass = content === 'undefined' ? 'text-danger' : 'text-success';
+            element.lastElementChild.innerHTML = `<span class="${elementClass}">${content}</span>`;
+            return true;
+        } else {
+            log('error', '#window-max-dimension is not a DOM element');
+            return false;
         }
     };
 
@@ -210,7 +242,7 @@ const DeviceInfo = () => {
     };
 
 
-    return {execute, win};
+    return {execute, log, injectIntoDom, win};
 };
 
 const di = DeviceInfo();
