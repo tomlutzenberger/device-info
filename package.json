@@ -26,14 +26,18 @@
     "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
   },
   "scripts": {
-    "less": "lessc --no-ie-compat --no-js --clean-css less/main.less dist/css/deviceinfo.min.css",
-    "update-fonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
     "lint:js": "eslint --config .eslintrc.json src;",
     "lint:style": "stylelint --config .stylelintrc less/*.less;",
     "lint:html": "htmlhint --config .htmlhintrc index.html;",
     "lint": "yarn run lint:html && yarn run lint:style && yarn run lint:js",
+    "test:unit": "mocha --colors --sort --check-leaks --use_strict -r jsdom-global/register",
+    "test": "yarn run lint && yarn run test:unit",
+
+    "less": "lessc --no-ie-compat --no-js --clean-css less/main.less dist/css/deviceinfo.min.css",
+    "update-fonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
     "uglify": "uglifyjs js/deviceinfo.js --output dist/js/deviceinfo.min.js --compress --mangle --reserved --comments --screw-ie8",
-    "test": "mocha --colors --sort --check-leaks --use_strict -r jsdom-global/register",
-    "build": "yarn run lint && yarn run test && yarn run update-fonts && yarn run less && yarn run uglify"
+    "compile": "yarn run update-fonts && yarn run less && yarn run uglify",
+
+    "build": "yarn run test && yarn run compile && yarn clean"
   }
 }
