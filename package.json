@@ -14,8 +14,13 @@
     "eslint": "^4.0.0",
     "eslint-config-standard": "^10.2.1",
     "htmlhint": "^0.9.13",
+    "jsdom": "^11.0.0",
+    "jsdom-global": "^3.0.2",
     "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.1",
+    "mocha": "^3.4.2",
+    "read-file": "^0.2.0",
+    "rewire": "^2.5.2",
     "stylelint": "^7.11.1",
     "stylelint-config-standard": "^16.0.0",
     "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
@@ -28,6 +33,7 @@
     "lint:html": "htmlhint --config .htmlhintrc index.html;",
     "lint": "yarn run lint:html && yarn run lint:style && yarn run lint:js",
     "uglify": "uglifyjs js/deviceinfo.js --output dist/js/deviceinfo.min.js --compress --mangle --reserved --comments --screw-ie8",
-    "build": "yarn run lint && yarn run update-fonts && yarn run less && yarn run uglify"
+    "test": "mocha --colors --sort --check-leaks --use_strict -r jsdom-global/register",
+    "build": "yarn run lint && yarn run test && yarn run update-fonts && yarn run less && yarn run uglify"
   }
 }
