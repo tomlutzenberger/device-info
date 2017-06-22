@@ -10,7 +10,7 @@
  * https://tomlutzenberger.github.io/device-info/
  */
 
-/*global window,document,require,describe,it,beforeEach,afterEach*/
+/*global global,window,document,require,describe,it*/
 /*jslint esnext:true */
 
 const assert = require('assert');
