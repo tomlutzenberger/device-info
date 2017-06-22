@@ -32,6 +32,8 @@ global.document = dom.window.document;
 const script = rewire('../js/deviceinfo.js');
 const DeviceInfo = script.__get__('DeviceInfo');
 
+const ZERO = 0;
+
 
 describe('DeviceInfo', () => {
 
@@ -69,7 +71,7 @@ describe('DeviceInfo', () => {
                 assert.ok(typeof DeviceInfo().win === 'object');
             });
             it('should not be an empty object', () => {
-                assert.ok(Object.keys(DeviceInfo().win).length > 0);
+                assert.ok(Object.keys(DeviceInfo().win).length > ZERO);
             });
         });
 
@@ -79,7 +81,7 @@ describe('DeviceInfo', () => {
                 assert.ok(Number.isInteger(DeviceInfo().win.getWindowInnerWidth()));
             });
             it('should be greater than zero', () => {
-                assert.ok(DeviceInfo().win.getWindowInnerWidth() > 0);
+                assert.ok(DeviceInfo().win.getWindowInnerWidth() > ZERO);
             });
         });
 
@@ -89,7 +91,7 @@ describe('DeviceInfo', () => {
                 assert.ok(Number.isInteger(DeviceInfo().win.getWindowInnerHeight()));
             });
             it('should be greater than zero', () => {
-                assert.ok(DeviceInfo().win.getWindowInnerHeight() > 0);
+                assert.ok(DeviceInfo().win.getWindowInnerHeight() > ZERO);
             });
         });
 
@@ -111,7 +113,7 @@ describe('DeviceInfo', () => {
                 assert.ok(Number.isInteger(DeviceInfo().win.getWindowOuterWidth()));
             });
             it('should be greater than zero', () => {
-                assert.ok(DeviceInfo().win.getWindowOuterWidth() > 0);
+                assert.ok(DeviceInfo().win.getWindowOuterWidth() > ZERO);
             });
         });
 
@@ -121,7 +123,7 @@ describe('DeviceInfo', () => {
                 assert.ok(Number.isInteger(DeviceInfo().win.getWindowOuterHeight()));
             });
             it('should be greater than zero', () => {
-                assert.ok(DeviceInfo().win.getWindowOuterHeight() > 0);
+                assert.ok(DeviceInfo().win.getWindowOuterHeight() > ZERO);
             });
         });
 
@@ -146,7 +148,7 @@ describe('DeviceInfo', () => {
             });
             it('should be greater than zero', () => {
                 if (window.screen.availWidth !== undefined) {
-                    assert.ok(DeviceInfo().win.getWindowMaxWidth() > 0);
+                    assert.ok(DeviceInfo().win.getWindowMaxWidth() > ZERO);
                 }
             });
         });
@@ -160,7 +162,7 @@ describe('DeviceInfo', () => {
             });
             it('should be greater than zero', () => {
                 if (window.screen.availHeight !== undefined) {
-                    assert.ok(DeviceInfo().win.getWindowMaxHeight() > 0);
+                    assert.ok(DeviceInfo().win.getWindowMaxHeight() > ZERO);
                 }
             });
         });
