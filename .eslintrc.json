@@ -31,7 +31,8 @@
         "prefer": { "arg": "param", "argument": "param" },
         "preferType": { "Boolean": "Boolean", "Number": "Number", "object": "Object", "String": "String" },
         "requireReturn": false,
-        "requireReturnType": true
+        "requireReturnType": true,
+        "requireReturnDescription": false
       }
     ],
     "curly": "error",
