@@ -1,0 +1,115 @@
+
+/**
+ * Variables
+ */
+
+@navbar-height: 60px;
+@footer-height: 150px;
+
+@color-love: #e04;
+@color-facebook: #3b5998;
+@color-twitter: #1da1f2;
+@color-github: #333;
+
+
+
+/**
+ * General
+ */
+
+body {
+  padding-bottom: @footer-height;
+  padding-top: @navbar-height;
+}
+
+footer {
+  background: @navbar-default-bg;
+  bottom: 0;
+  color: @navbar-default-color;
+  height: @footer-height;
+  padding: @grid-gutter-width 0;
+  position: fixed;
+  width: 100%;
+}
+
+
+
+/**
+ * Components
+ */
+
+.container-fluid,
+.container {
+
+  > .navbar-collapse,
+  > .navbar-header {
+    float: none;
+  }
+}
+
+.navbar {
+
+  > .container,
+  > .container-fluid {
+
+    .navbar-brand {
+      &:extend(.center-block);
+    }
+  }
+}
+
+.navbar-brand {
+  float: none;
+  padding: 11px 15px;
+}
+
+
+
+/**
+ * Utilities
+ */
+
+.color-red {
+  color: @color-love;
+}
+
+.btn-facebook {
+  background: @color-facebook;
+  border: 1px solid #fff;
+  color: #fff;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: #fff;
+    color: @color-facebook;
+  }
+}
+
+.btn-twitter {
+  background: @color-twitter;
+  border: 1px solid #fff;
+  color: #fff;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: #fff;
+    color: @color-twitter;
+  }
+}
+
+.btn-github {
+  background: @color-github;
+  border: 1px solid #fff;
+  color: #fff;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: #fff;
+    color: @color-github;
+  }
+}
+
+
