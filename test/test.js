@@ -37,6 +37,11 @@ const ZERO = 0;
 
 describe('DeviceInfo', () => {
 
+
+    /**
+     * @description Main functions
+     *
+     */
     describe('#DeviceInfo()', () => {
         it('should return an object', () => {
             assert.ok(typeof DeviceInfo() === 'object');
@@ -64,6 +69,12 @@ describe('DeviceInfo', () => {
         });
     });
 
+
+
+    /**
+     * @description Window functions
+     *
+     */
     describe('DeviceInfo.win', () => {
 
         describe('#win', () => {
