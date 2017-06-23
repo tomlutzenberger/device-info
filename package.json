@@ -7,7 +7,8 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {
     "copyfiles": "^1.2.0",
@@ -32,12 +33,11 @@
     "lint": "yarn run lint:html && yarn run lint:style && yarn run lint:js",
     "test:unit": "mocha --colors --sort --check-leaks --use_strict -r jsdom-global/register",
     "test": "yarn run lint && yarn run test:unit",
-
     "less": "lessc --no-ie-compat --no-js --clean-css less/main.less dist/css/deviceinfo.min.css",
     "update-fonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
     "uglify": "uglifyjs js/deviceinfo.js --output dist/js/deviceinfo.min.js --compress --mangle --reserved --comments --screw-ie8",
+    "pug": "pug --out ./ pug/index.pug",
     "compile": "yarn run update-fonts && yarn run less && yarn run uglify",
-
     "build": "yarn run test && yarn run compile && yarn clean"
   }
 }
