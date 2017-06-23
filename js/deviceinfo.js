@@ -32,23 +32,23 @@ const DeviceInfo = () => {
     const win = {
 
         /**
-         * @method getWindowInnerWidth
+         * @method getInnerWidth
          * @description Get inner window width or a string "undefined" if not available
          *
          * @returns {(Number|String)}
          */
-        getWindowInnerWidth: () => {
+        getInnerWidth: () => {
             return window.innerWidth || 'undefined';
         },
 
 
         /**
-         * @method getWindowInnerHeight
+         * @method getInnerHeight
          * @description Get inner window height or a string "undefined" if not available
          *
          * @returns {(Number|String)}
          */
-        getWindowInnerHeight: () => {
+        getInnerHeight: () => {
             return window.innerHeight || 'undefined';
         },
 
@@ -60,28 +60,28 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowInnerDimension: () => {
-            const content = `${win.getWindowInnerWidth()}x${win.getWindowInnerHeight()}`;
+            const content = `${win.getInnerWidth()}x${win.getInnerHeight()}`;
             return injectIntoDom('window-inner-dimension', content);
         },
 
         /**
-         * @method getWindowOuterWidth
+         * @method getOuterWidth
          * @description Get outer window width or a string "undefined" if not available
          *
          * @returns {(Number|String)}
          */
-        getWindowOuterWidth: () => {
+        getOuterWidth: () => {
             return window.outerWidth || 'undefined';
         },
 
 
         /**
-         * @method getWindowOuterHeight
+         * @method getOuterHeight
          * @description Get outer window height or a string "undefined" if not available
          *
          * @returns {(Number|String)}
          */
-        getWindowOuterHeight: () => {
+        getOuterHeight: () => {
             return window.outerHeight || 'undefined';
         },
 
@@ -93,29 +93,29 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowOuterDimension: () => {
-            const content = `${win.getWindowOuterWidth()}x${win.getWindowOuterHeight()}`;
+            const content = `${win.getOuterWidth()}x${win.getOuterHeight()}`;
             return injectIntoDom('window-outer-dimension', content);
         },
 
 
         /**
-         * @method getWindowMaxWidth
+         * @method getMaxWidth
          * @description Get maximum window width or a string "undefined" if not available
          *
          * @returns {(Number|String)}
          */
-        getWindowMaxWidth: () => {
+        getMaxWidth: () => {
             return window.screen.availWidth || 'undefined';
         },
 
 
         /**
-         * @method getWindowMaxHeight
+         * @method getMaxHeight
          * @description Get maximum window height or a string "undefined" if not available
          *
          * @returns {(Number|String)}
          */
-        getWindowMaxHeight: () => {
+        getMaxHeight: () => {
             return window.screen.availHeight || 'undefined';
         },
 
@@ -127,27 +127,27 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowMaxDimension: () => {
-            const content = `${win.getWindowMaxWidth()}x${win.getWindowMaxHeight()}`;
+            const content = `${win.getMaxWidth()}x${win.getMaxHeight()}`;
             return injectIntoDom('window-max-dimension', content);
         },
 
 
         /**
-         * @method getWindowSize
+         * @method getSize
          * @description Get window size
          *
          * @returns {String}
          */
-        getWindowSize: () => {
+        getSize: () => {
             let windowSize = '';
 
             if (window.fullScreen) {
                 windowSize = 'Fullscreen';
-            } else if (win.getWindowOuterWidth() === window.screen.availWidth &&
-                        win.getWindowOuterHeight() === window.screen.availHeight) {
+            } else if (win.getOuterWidth() === window.screen.availWidth &&
+                        win.getOuterHeight() === window.screen.availHeight) {
                 windowSize = 'Maximized';
-            } else if (win.getWindowOuterWidth() === WINDOW_MIN_WIDTH &&
-                        win.getWindowOuterHeight() === WINDOW_MIN_HEIGHT) {
+            } else if (win.getOuterWidth() === WINDOW_MIN_WIDTH &&
+                        win.getOuterHeight() === WINDOW_MIN_HEIGHT) {
                 windowSize = 'Minimized';
             } else {
                 windowSize = 'Restored';
@@ -164,7 +164,7 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowSize: () => {
-            const content = `${win.getWindowSize()}`;
+            const content = `${win.getSize()}`;
             return injectIntoDom('window-size', content);
         }
     };
@@ -268,8 +268,8 @@ const DeviceInfo = () => {
 
             if (window.screenX < ZERO ||
                 window.screenY < ZERO ||
-                window.screenX > win.getWindowMaxWidth() ||
-                window.screenY > win.getWindowMaxHeight()) {
+                window.screenX > win.getMaxWidth() ||
+                window.screenY > win.getMaxHeight()) {
                 isPrimary = false;
             }
 
@@ -301,7 +301,7 @@ const DeviceInfo = () => {
 
             if (window.screenX < ZERO) {
                 positionX = 'Left';
-            } else if (window.screenX > win.getWindowMaxWidth()) {
+            } else if (window.screenX > win.getMaxWidth()) {
                 positionX = 'Right';
             } else {
                 positionX = 'Center';
@@ -309,7 +309,7 @@ const DeviceInfo = () => {
 
             if (window.screenY < ZERO) {
                 positionY = 'Top';
-            } else if (window.screenY > win.getWindowMaxHeight()) {
+            } else if (window.screenY > win.getMaxHeight()) {
                 positionY = 'Bottom';
             } else {
                 positionY = 'Center';
