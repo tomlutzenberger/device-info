@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/tomlutzenberger/device-info.png?branch=master)](https://travis-ci.org/tomlutzenberger/device-info)
 [![Releases](https://img.shields.io/github/release/tomlutzenberger/device-info/all.svg)](https://github.com/tomlutzenberger/device-info/releases)
 [![NSP Status](https://nodesecurity.io/orgs/tomlutzenberger/projects/174affe6-5f96-4be8-b9cf-09b02247426d/badge)](https://nodesecurity.io/orgs/tomlutzenberger/projects/174affe6-5f96-4be8-b9cf-09b02247426d)
 [![David](https://img.shields.io/david/tomlutzenberger/device-info.svg)]()
