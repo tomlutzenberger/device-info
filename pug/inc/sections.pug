@@ -1,0 +1,42 @@
+
+-
+  var sections = {
+    'window': 'Window'
+  }
+
+-
+  var panels = {
+    'window': {
+      'inner-dimension': 'Inner Dimension',
+      'outer-dimension': 'Outer Dimension',
+      'max-dimension': 'Max Dimension',
+      'size': 'Size'
+    }
+  }
+
+
+mixin panel(title)
+  .col-xs-3
+    .panel.panel-default.text-center&attributes(attributes)
+      .panel-heading
+        h3.h4= title
+      .panel-body
+        i.fa.fa-circle-o-notch.fa-spin.fa-2x.fa-fw
+        span.sr-only
+          | Loading...
+
+
+mixin section(title, prefix, sectionpanels)
+  section&attributes(attributes)
+    .container
+      .page-header
+        .row
+          .col-xs-12
+            h1= title
+      .row
+        each val, index in sectionpanels
+          +panel(val)(id=prefix + "-" + index)
+
+
+each val, index in sections
+  +section(val, index, panels[index])(class="section-"+index)
