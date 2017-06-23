@@ -21,6 +21,9 @@
  */
 const DeviceInfo = () => {
 
+    const ZERO = 0;
+    const WINDOW_MIN_WIDTH = 160;
+    const WINDOW_MIN_HEIGHT = 28;
 
     /**
      * @property win
@@ -136,8 +139,6 @@ const DeviceInfo = () => {
          * @returns {String}
          */
         getWindowSize: () => {
-            const WINDOW_MIN_WIDTH = 160;
-            const WINDOW_MIN_HEIGHT = 28;
             let windowSize = '';
 
             if (window.fullScreen) {
@@ -165,6 +166,168 @@ const DeviceInfo = () => {
         setWindowSize: () => {
             const content = `${win.getWindowSize()}`;
             return injectIntoDom('window-size', content);
+        }
+    };
+
+
+
+    /**
+     * @property screen
+     * @description Wraps all screen methods
+     */
+    const screen = {
+
+        /**
+         * @method getWidth
+         * @description Get screen width or a string "undefined" if not available
+         *
+         * @returns {(Number|String)}
+         */
+        getWidth: () => {
+            return typeCheck(window.screen.width, 'window.screen.width');
+        },
+
+
+        /**
+         * @method getHeight
+         * @description Get screen height or a string "undefined" if not available
+         *
+         * @returns {(Number|String)}
+         */
+        getHeight: () => {
+            return typeCheck(window.screen.height, 'window.screen.height');
+        },
+
+
+        /**
+         * @method setDimension
+         * @description Injects the screen dimension into the DOM
+         *
+         * @returns {void}
+         */
+        setDimension: () => {
+            const content = `${screen.getWidth()}x${screen.getHeight()}`;
+            return injectIntoDom('screen-dimension', content);
+        },
+
+
+        /**
+         * @method getPixelRatio
+         * @description Get screen pixel ratio or a string "undefined" if not available
+         *
+         * @returns {(Number|String)}
+         */
+        getPixelRatio: () => {
+            return typeCheck(window.devicePixelRatio, 'window.devicePixelRatio');
+        },
+
+
+        /**
+         * @method setPixelRatio
+         * @description Injects the pixel ratio into the DOM
+         *
+         * @returns {void}
+         */
+        setPixelRatio: () => {
+            const content = `${screen.getPixelRatio()}x`;
+            return injectIntoDom('screen-pixel-ratio', content);
+        },
+
+
+        /**
+         * @method getColorDepth
+         * @description Get screen color depth or a string "undefined" if not available
+         *
+         * @returns {(Number|String)}
+         */
+        getColorDepth: () => {
+            return typeCheck(window.screen.colorDepth, 'window.screen.colorDepth');
+        },
+
+
+        /**
+         * @method setColorDepth
+         * @description Injects the pixel ratio into the DOM
+         *
+         * @returns {void}
+         */
+        setColorDepth: () => {
+            const content = `${screen.getColorDepth()} Bit`;
+            return injectIntoDom('screen-color-depth', content);
+        },
+
+
+        /**
+         * @method getScreenType
+         * @description Get screen type by window position
+         *
+         * @returns {String}
+         */
+        getScreenType: () => {
+            let isPrimary = true;
+
+            if (window.screenX < ZERO ||
+                window.screenY < ZERO ||
+                window.screenX > win.getWindowMaxWidth() ||
+                window.screenY > win.getWindowMaxHeight()) {
+                isPrimary = false;
+            }
+
+            return isPrimary ? 'Primary' : 'Secondary';
+        },
+
+
+        /**
+         * @method setScreenType
+         * @description Injects the screen type into the DOM
+         *
+         * @returns {void}
+         */
+        setScreenType: () => {
+            const content = `${screen.getScreenType()} Screen`;
+            return injectIntoDom('screen-type', content);
+        },
+
+
+        /**
+         * @method getScreenPosition
+         * @description Get screen position
+         *
+         * @returns {String}
+         */
+        getScreenPosition: () => {
+            let positionX = '';
+            let positionY = '';
+
+            if (window.screenX < ZERO) {
+                positionX = 'Left';
+            } else if (window.screenX > win.getWindowMaxWidth()) {
+                positionX = 'Right';
+            } else {
+                positionX = 'Center';
+            }
+
+            if (window.screenY < ZERO) {
+                positionY = 'Top';
+            } else if (window.screenY > win.getWindowMaxHeight()) {
+                positionY = 'Bottom';
+            } else {
+                positionY = 'Center';
+            }
+
+            return positionX === positionY ? positionX : positionX + ' ' + positionY;
+        },
+
+
+        /**
+         * @method setScreenPosition
+         * @description Injects the screen position into the DOM
+         *
+         * @returns {void}
+         */
+        setScreenPosition: () => {
+            const content = `${screen.getScreenPosition()}`;
+            return injectIntoDom('screen-position', content);
         }
     };
 
@@ -207,6 +370,25 @@ const DeviceInfo = () => {
 
 
     /**
+     * @method typeCheck
+     * @description Tests if given value may be undefined and return "undefined"if so, otherwise return original value
+     *
+     * @param {*} value - Value to be tested
+     * @param {String} name - Name of the value
+     * @return {*}
+     */
+    const typeCheck = (value, name) => {
+        if (value === undefined || value === null) {
+            log('warn', `${name} is undefined (=${value})`);
+            return 'undefined';
+        } else {
+            return value;
+        }
+    };
+
+
+
+    /**
      * @method injectIntoDom
      * @description Injects text/html into DOM
      *
@@ -239,10 +421,16 @@ const DeviceInfo = () => {
         win.setWindowOuterDimension();
         win.setWindowMaxDimension();
         win.setWindowSize();
+
+        screen.setDimension();
+        screen.setPixelRatio();
+        screen.setColorDepth();
+        screen.setScreenType();
+        screen.setScreenPosition();
     };
 
 
-    return {execute, log, injectIntoDom, win};
+    return {execute, log, typeCheck, injectIntoDom, win, screen};
 };
 
 const di = DeviceInfo();
