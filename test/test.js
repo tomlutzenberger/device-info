@@ -105,22 +105,22 @@ describe('DeviceInfo', () => {
         });
 
 
-        describe('#getWindowInnerWidth()', () => {
+        describe('#getInnerWidth()', () => {
             it('should return an integer', () => {
-                assert.ok(Number.isInteger(DeviceInfo().win.getWindowInnerWidth()));
+                assert.ok(Number.isInteger(DeviceInfo().win.getInnerWidth()));
             });
             it('should be greater than zero', () => {
-                assert.ok(DeviceInfo().win.getWindowInnerWidth() > ZERO);
+                assert.ok(DeviceInfo().win.getInnerWidth() > ZERO);
             });
         });
 
 
-        describe('#getWindowInnerHeight()', () => {
+        describe('#getInnerHeight()', () => {
             it('should return an integer', () => {
-                assert.ok(Number.isInteger(DeviceInfo().win.getWindowInnerHeight()));
+                assert.ok(Number.isInteger(DeviceInfo().win.getInnerHeight()));
             });
             it('should be greater than zero', () => {
-                assert.ok(DeviceInfo().win.getWindowInnerHeight() > ZERO);
+                assert.ok(DeviceInfo().win.getInnerHeight() > ZERO);
             });
         });
 
@@ -137,22 +137,22 @@ describe('DeviceInfo', () => {
         });
 
 
-        describe('#getWindowOuterWidth()', () => {
+        describe('#getOuterWidth()', () => {
             it('should return an integer', () => {
-                assert.ok(Number.isInteger(DeviceInfo().win.getWindowOuterWidth()));
+                assert.ok(Number.isInteger(DeviceInfo().win.getOuterWidth()));
             });
             it('should be greater than zero', () => {
-                assert.ok(DeviceInfo().win.getWindowOuterWidth() > ZERO);
+                assert.ok(DeviceInfo().win.getOuterWidth() > ZERO);
             });
         });
 
 
-        describe('#getWindowOuterHeight()', () => {
+        describe('#getOuterHeight()', () => {
             it('should return an integer', () => {
-                assert.ok(Number.isInteger(DeviceInfo().win.getWindowOuterHeight()));
+                assert.ok(Number.isInteger(DeviceInfo().win.getOuterHeight()));
             });
             it('should be greater than zero', () => {
-                assert.ok(DeviceInfo().win.getWindowOuterHeight() > ZERO);
+                assert.ok(DeviceInfo().win.getOuterHeight() > ZERO);
             });
         });
 
@@ -169,29 +169,29 @@ describe('DeviceInfo', () => {
         });
 
 
-        describe('#getWindowMaxWidth()', () => {
+        describe('#getMaxWidth()', () => {
             it('should return an integer', () => {
                 if (window.screen.availWidth !== undefined) {
-                    assert.ok(Number.isInteger(DeviceInfo().win.getWindowMaxWidth()));
+                    assert.ok(Number.isInteger(DeviceInfo().win.getMaxWidth()));
                 }
             });
             it('should be greater than zero', () => {
                 if (window.screen.availWidth !== undefined) {
-                    assert.ok(DeviceInfo().win.getWindowMaxWidth() > ZERO);
+                    assert.ok(DeviceInfo().win.getMaxWidth() > ZERO);
                 }
             });
         });
 
 
-        describe('#getWindowMaxHeight()', () => {
+        describe('#getMaxHeight()', () => {
             it('should return an integer', () => {
                 if (window.screen.availHeight !== undefined) {
-                    assert.ok(Number.isInteger(DeviceInfo().win.getWindowMaxHeight()));
+                    assert.ok(Number.isInteger(DeviceInfo().win.getMaxHeight()));
                 }
             });
             it('should be greater than zero', () => {
                 if (window.screen.availHeight !== undefined) {
-                    assert.ok(DeviceInfo().win.getWindowMaxHeight() > ZERO);
+                    assert.ok(DeviceInfo().win.getMaxHeight() > ZERO);
                 }
             });
         });
