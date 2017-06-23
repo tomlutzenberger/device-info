@@ -36,8 +36,9 @@
     "less": "lessc --no-ie-compat --no-js --clean-css less/main.less dist/css/deviceinfo.min.css",
     "update-fonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
     "uglify": "uglifyjs js/deviceinfo.js --output dist/js/deviceinfo.min.js --compress --mangle --reserved --comments --screw-ie8",
-    "pug": "pug --out ./ pug/index.pug",
-    "compile": "yarn run update-fonts && yarn run less && yarn run uglify",
-    "build": "yarn run test && yarn run compile && yarn clean"
+    "pug:compile": "pug --out ./ pug/index.pug",
+    "pug:watch": "pug --out ./ pug/index.pug --watch",
+    "compile": "yarn run update-fonts && yarn run less && yarn run uglify && yarn run pug:compile",
+    "build": "yarn run compile && yarn run test && yarn clean"
   }
 }
