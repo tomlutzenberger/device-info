@@ -38,7 +38,7 @@ const DeviceInfo = () => {
          * @returns {(Number|String)}
          */
         getInnerWidth: () => {
-            return window.innerWidth || 'undefined';
+            return typeCheck(window.innerWidth, 'window.innerWidth');
         },
 
 
@@ -49,7 +49,7 @@ const DeviceInfo = () => {
          * @returns {(Number|String)}
          */
         getInnerHeight: () => {
-            return window.innerHeight || 'undefined';
+            return typeCheck(window.innerHeight, 'window.innerHeight');
         },
 
 
@@ -71,7 +71,7 @@ const DeviceInfo = () => {
          * @returns {(Number|String)}
          */
         getOuterWidth: () => {
-            return window.outerWidth || 'undefined';
+            return typeCheck(window.outerWidth, 'window.outerWidth');
         },
 
 
@@ -82,7 +82,7 @@ const DeviceInfo = () => {
          * @returns {(Number|String)}
          */
         getOuterHeight: () => {
-            return window.outerHeight || 'undefined';
+            return typeCheck(window.outerHeight, 'window.outerHeight');
         },
 
 
@@ -105,7 +105,7 @@ const DeviceInfo = () => {
          * @returns {(Number|String)}
          */
         getMaxWidth: () => {
-            return window.screen.availWidth || 'undefined';
+            return typeCheck(window.screen.availWidth, 'window.screen.availWidth');
         },
 
 
@@ -116,7 +116,7 @@ const DeviceInfo = () => {
          * @returns {(Number|String)}
          */
         getMaxHeight: () => {
-            return window.screen.availHeight || 'undefined';
+            return typeCheck(window.screen.availHeight, 'window.screen.availHeight');
         },
 
 
