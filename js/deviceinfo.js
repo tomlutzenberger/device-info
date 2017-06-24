@@ -61,8 +61,7 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowInnerDimension: () => {
-            const content = `${win.getInnerWidth()}x${win.getInnerHeight()}`;
-            return injectIntoDom('window-inner-dimension', content);
+            return injectIntoDom('window-inner-dimension', `${win.getInnerWidth()}x${win.getInnerHeight()}`);
         },
 
         /**
@@ -94,8 +93,7 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowOuterDimension: () => {
-            const content = `${win.getOuterWidth()}x${win.getOuterHeight()}`;
-            return injectIntoDom('window-outer-dimension', content);
+            return injectIntoDom('window-outer-dimension', `${win.getOuterWidth()}x${win.getOuterHeight()}`);
         },
 
 
@@ -128,8 +126,7 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowMaxDimension: () => {
-            const content = `${win.getMaxWidth()}x${win.getMaxHeight()}`;
-            return injectIntoDom('window-max-dimension', content);
+            return injectIntoDom('window-max-dimension', `${win.getMaxWidth()}x${win.getMaxHeight()}`);
         },
 
 
@@ -165,8 +162,7 @@ const DeviceInfo = () => {
          * @returns {Boolean}
          */
         setWindowSize: () => {
-            const content = `${win.getSize()}`;
-            return injectIntoDom('window-size', content);
+            return injectIntoDom('window-size', `${win.getSize()}`);
         }
     };
 
@@ -207,8 +203,7 @@ const DeviceInfo = () => {
          * @returns {void}
          */
         setDimension: () => {
-            const content = `${screen.getWidth()}x${screen.getHeight()}`;
-            return injectIntoDom('screen-dimension', content);
+            return injectIntoDom('screen-dimension', `${screen.getWidth()}x${screen.getHeight()}`);
         },
 
 
@@ -230,8 +225,7 @@ const DeviceInfo = () => {
          * @returns {void}
          */
         setPixelRatio: () => {
-            const content = `${screen.getPixelRatio()}x`;
-            return injectIntoDom('screen-pixel-ratio', content);
+            return injectIntoDom('screen-pixel-ratio', `${screen.getPixelRatio()}x`);
         },
 
 
@@ -253,8 +247,7 @@ const DeviceInfo = () => {
          * @returns {void}
          */
         setColorDepth: () => {
-            const content = `${screen.getColorDepth()} Bit`;
-            return injectIntoDom('screen-color-depth', content);
+            return injectIntoDom('screen-color-depth', `${screen.getColorDepth()} Bit`);
         },
 
 
@@ -285,8 +278,7 @@ const DeviceInfo = () => {
          * @returns {void}
          */
         setScreenType: () => {
-            const content = `${screen.getScreenType()} Screen`;
-            return injectIntoDom('screen-type', content);
+            return injectIntoDom('screen-type', `${screen.getScreenType()} Screen`);
         },
 
 
@@ -327,8 +319,7 @@ const DeviceInfo = () => {
          * @returns {void}
          */
         setScreenPosition: () => {
-            const content = `${screen.getScreenPosition()}`;
-            return injectIntoDom('screen-position', content);
+            return injectIntoDom('screen-position', `${screen.getScreenPosition()}`);
         }
     };
 
