@@ -349,6 +349,22 @@ describe('DeviceInfo', () => {
         });
 
 
+        describe('#getAxisPosition()', () => {
+            it('should return a string', () => {
+                assert.ok(typeof DeviceInfo().screen.getAxisPosition('x') === 'string');
+            });
+            it('should return "Center" for "x"', () => {
+                assert.ok(DeviceInfo().screen.getAxisPosition('x') === 'Center');
+            });
+            it('should return "Center" for "y"', () => {
+                assert.ok(DeviceInfo().screen.getAxisPosition('y') === 'Center');
+            });
+            it('should return "undefined" for invalid parameter', () => {
+                assert.ok(DeviceInfo().screen.getAxisPosition('z') === 'undefined');
+            });
+        });
+
+
         describe('#getScreenPosition()', () => {
             it('should return a string', () => {
                 assert.ok(typeof DeviceInfo().screen.getScreenPosition() === 'string');
