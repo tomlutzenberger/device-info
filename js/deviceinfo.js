@@ -283,30 +283,46 @@ const DeviceInfo = () => {
 
 
         /**
+         * @method getAxisPosition
+         * @description Get axis position
+         *
+         * @param {String} axisParam - The axis (x or y)
+         * @returns {String}
+         */
+        getAxisPosition: (axisParam) => {
+            const axis = axisParam.toUpperCase();
+            let position = '';
+
+            if (axis === 'X' || axis === 'Y') {
+                const screenProp = axis === 'X' ? 'screenX' : 'screenY';
+                const sizeFn = axis === 'X' ? 'getMaxWidth' : 'getMaxHeight';
+
+
+                if (window[screenProp] < ZERO) {
+                    position = axis === 'X' ? 'Left' : 'Top';
+                } else if (window.screenX > win[sizeFn]()) {
+                    position = axis === 'X' ? 'Right' : 'Bottom';
+                } else {
+                    position = 'Center';
+                }
+            } else {
+                position = UNDEFINED;
+                log('error', `Position axis has to be either "x" or "y", not "${axisParam}"`);
+            }
+
+            return position;
+        },
+
+
+        /**
          * @method getScreenPosition
          * @description Get screen position
          *
          * @returns {String}
          */
         getScreenPosition: () => {
-            let positionX = '';
-            let positionY = '';
-
-            if (window.screenX < ZERO) {
-                positionX = 'Left';
-            } else if (window.screenX > win.getMaxWidth()) {
-                positionX = 'Right';
-            } else {
-                positionX = 'Center';
-            }
-
-            if (window.screenY < ZERO) {
-                positionY = 'Top';
-            } else if (window.screenY > win.getMaxHeight()) {
-                positionY = 'Bottom';
-            } else {
-                positionY = 'Center';
-            }
+            let positionX = screen.getAxisPosition('x');
+            let positionY = screen.getAxisPosition('y');
 
             return mergeValues(positionX, positionY);
         },
