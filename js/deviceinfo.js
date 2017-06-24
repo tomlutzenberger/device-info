@@ -308,7 +308,7 @@ const DeviceInfo = () => {
                 positionY = 'Center';
             }
 
-            return positionX === positionY ? positionX : positionX + ' ' + positionY;
+            return mergeValues(positionX, positionY);
         },
 
 
@@ -357,6 +357,25 @@ const DeviceInfo = () => {
         }
 
         return false;
+    };
+
+
+
+    /**
+     * @method mergeValues
+     * @description Merge 2 values into a single one if identical, otherwise concat with a space
+     *
+     * @param {(String|Number)} firstValue - First value to be merged
+     * @param {(String|Number)} secondValue - Second value to be merged
+     * @param {String} delimiter - Delimiter for concatenation
+     * @return {String}
+     */
+    const mergeValues = (firstValue, secondValue, delimiter = ' ') => {
+        if (firstValue === secondValue) {
+            return firstValue;
+        } else {
+            return `${firstValue}${delimiter}${secondValue}`;
+        }
     };
 
 
@@ -422,7 +441,7 @@ const DeviceInfo = () => {
     };
 
 
-    return {execute, log, typeCheck, injectIntoDom, win, screen};
+    return {execute, log, mergeValues, typeCheck, injectIntoDom, win, screen};
 };
 
 const di = DeviceInfo();
