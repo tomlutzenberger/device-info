@@ -22,6 +22,7 @@
 const DeviceInfo = () => {
 
     const ZERO = 0;
+    const UNDEFINED = 'undefined';
     const WINDOW_MIN_WIDTH = 160;
     const WINDOW_MIN_HEIGHT = 28;
 
@@ -380,7 +381,7 @@ const DeviceInfo = () => {
     const typeCheck = (value, name) => {
         if (value === undefined || value === null) {
             log('warn', `${name} is undefined (=${value})`);
-            return 'undefined';
+            return UNDEFINED;
         } else {
             return value;
         }
@@ -399,11 +400,11 @@ const DeviceInfo = () => {
     const injectIntoDom = (domElementId, content) => {
         const element = document.getElementById(domElementId);
         if (element !== null) {
-            const elementClass = content === 'undefined' ? 'text-danger' : 'text-success';
+            const elementClass = content === UNDEFINED ? 'text-danger' : 'text-success';
             element.lastElementChild.innerHTML = `<span class="${elementClass}">${content}</span>`;
             return true;
         } else {
-            log('error', '#window-max-dimension is not a DOM element');
+            log('error', `${domElementId} is not a DOM element`);
             return false;
         }
     };
