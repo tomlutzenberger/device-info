@@ -61,6 +61,18 @@ describe('DeviceInfo', () => {
         });
     });
 
+    describe('#DeviceInfo().mergeValues()', () => {
+        it('should merge identical values', () => {
+            assert.equal(DeviceInfo().mergeValues('test', 'test'), 'test');
+        });
+        it('should concat different values', () => {
+            assert.equal(DeviceInfo().mergeValues('test1', 'test2'), 'test1 test2');
+        });
+        it('should concat different values with non-default delimiter', () => {
+            assert.equal(DeviceInfo().mergeValues('test1', 'test2', '&'), 'test1&test2');
+        });
+    });
+
     describe('#DeviceInfo().typeCheck()', () => {
         it('should succeed on integer', () => {
             const testValue = 123;
