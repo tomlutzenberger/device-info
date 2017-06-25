@@ -4,7 +4,8 @@
  */
 
 @navbar-height: 60px;
-@footer-height: 150px;
+@footer-xs-height: 90px;
+@footer-md-height: 150px;
 
 @color-love: #e04;
 @color-facebook: #3b5998;
@@ -23,7 +24,7 @@ html {
 
 body {
   min-height: 100%;
-  padding-bottom: @footer-height;
+  padding-bottom: @footer-md-height;
   padding-top: @navbar-height;
 }
 
@@ -31,10 +32,30 @@ footer {
   background: @navbar-default-bg;
   bottom: 0;
   color: @navbar-default-color;
-  height: @footer-height;
+  height: @footer-md-height;
   padding: @grid-gutter-width 0;
   position: fixed;
   width: 100%;
+
+  .btn {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: @screen-sm-max) {
+
+  body {
+    padding-bottom: @footer-xs-height;
+  }
+
+  footer {
+    height: @footer-xs-height;
+    padding: @grid-gutter-width/2 0;
+
+    p {
+      margin-bottom: 5px;
+    }
+  }
 }
 
 
