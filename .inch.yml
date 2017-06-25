@@ -1,10 +1,4 @@
-{
-  "files": {
-    "included": [
-      "js/*.js"
-    ],
-    "excluded": [
-      "lib/*.js"
-    ]
-  }
-}
+files:
+  # define files included in the analysis
+  included:
+    - js/*.js
