@@ -39,6 +39,6 @@
     "pug:compile": "pug --out ./ pug/index.pug",
     "pug:watch": "pug --out ./ pug/index.pug --watch",
     "compile": "yarn run update-fonts && yarn run less && yarn run uglify && yarn run pug:compile",
-    "build": "yarn run compile && yarn run test && yarn clean"
+    "build": "yarn run compile && yarn run test"
   }
 }
