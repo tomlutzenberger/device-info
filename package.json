@@ -6,7 +6,7 @@
   "author": "Tom Lutzenberger <lutzenbergerthomas@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "font-awesome": "^4.7.0",
     "pug-cli": "^1.0.0-alpha6"
   },
